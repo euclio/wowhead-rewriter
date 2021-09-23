@@ -1,3 +1,7 @@
 for (const link of document.getElementsByTagName('a')) {
-    link.href = link.href.replace('wowhead', 'wotlkdb');
+    if (link.href.contains('wowhead')) {
+        const url = new URL(link.href);
+        url.hostname = url.hostname.replace(/wowhead\.com$/, 'wotlkdb.com')
+        link.href = url.toString();
+    }
 }
